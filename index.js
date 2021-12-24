@@ -1,5 +1,7 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
+const fortune = require('./lib/fortune')
+
 
 const app = express()
 const port = process.env.PORT || 3030
@@ -17,8 +19,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    const randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)]
-    res.render('about', {fortune: randomFortune})
+    // const randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)]
+    res.render('about', {fortune: fortune.getFortune()})
 })
 
 app.use((req, res) => {
@@ -38,10 +40,10 @@ app.listen(port, () => console.log(
     `press Ctrl+C for exit`
 ))
 
-const fortunes = [
-    "Победи свои страхи, или они победят тебя.",
-    "Рекам нужны истоки.",
-    "Не бойся неведомого.",
-    "Тебя ждет приятный сюрприз.",
-    "Будь проще везде, где только можно.",
-]
+// const fortunes = [
+//     "Победи свои страхи, или они победят тебя.",
+//     "Рекам нужны истоки.",
+//     "Не бойся неведомого.",
+//     "Тебя ждет приятный сюрприз.",
+//     "Будь проще везде, где только можно.",
+// ]
