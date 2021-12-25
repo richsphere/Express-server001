@@ -22,15 +22,11 @@ app.use(handlers.notFound)
 // 500 Page
 app.use(handlers.serverError)
 
-app.listen(port, () => console.log(
-    `Express running on http://localhost:${port} ` +
-    `press Ctrl+C for exit`
-))
-
-// const fortunes = [
-//     "Победи свои страхи, или они победят тебя.",
-//     "Рекам нужны истоки.",
-//     "Не бойся неведомого.",
-//     "Тебя ждет приятный сюрприз.",
-//     "Будь проще везде, где только можно.",
-// ]
+if(require.main === module) {
+    app.listen(port, () => console.log(
+        `Express running on http://localhost:${port} ` +
+        `press Ctrl+C for exit`
+    ))
+} else {
+    module.exports = app
+}
